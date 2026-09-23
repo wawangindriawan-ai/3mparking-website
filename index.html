@@ -70,7 +70,7 @@
     <img src="images/hero.jpg" alt="Barrier gate dan sistem parkir digital 3M Parking" fetchpriority="high" decoding="async">
   </div>
   <div class="container hero-content">
-    <div class="hero-eyebrow"><span class="dot"></span> PT TIGA MARKA UTAMA — SEJAK 2017</div>
+    <div class="hero-eyebrow"><span class="dot"></span> PT TIGA MARKA UTAMA</div>
     <h1 class="hero-title">Smart parking management &amp; <span class="hl">reliable human resources</span> solutions.</h1>
     <p class="hero-sub">Kami mengelola operasional parkir secara menyeluruh — dari sistem tiket dan SDM profesional, hingga teknologi otomatisasi transaksi — untuk mitra di Jakarta dan Bandung.</p>
     <div class="hero-actions">
@@ -99,11 +99,15 @@
           <span class="rule-accent"></span>
           <h2 class="section-title"><span class="t-lead">Tentang</span> Kami</h2>
         </div>
-        <div class="about-copy">
+        <div class="about-copy" id="aboutCopy">
           <p>Didirikan sejak tahun 2017, PT Tiga Marka Utama (3M Parking) merupakan perusahaan yang bergerak khusus di bidang manajemen dan pengelolaan perparkiran, penyediaan teknologi perparkiran modern, serta sumber daya manusia profesional di sektor parkir.</p>
           <p>Dengan pengalaman manajemen lebih dari 5 tahun, kami berkomitmen memberikan solusi parkir yang terintegrasi, mulai dari sistem pengoperasian di lapangan hingga implementasi teknologi otomatisasi transaksi. 3M Parking hadir untuk membantu mitra bisnis menciptakan area parkir yang efisien, aman, dan bernilai tambah.</p>
-          <p>Didukung oleh tim yang kompeten serta sistem kerja yang berbasis data, kami terus tumbuh menjadi mitra terpercaya bagi berbagai instansi, mulai dari pusat perbelanjaan, hotel, rumah sakit, hingga area publik dan residensial di berbagai kota besar seperti Jakarta dan Bandung.</p>
+          <p class="about-more">Didukung oleh tim yang kompeten serta sistem kerja yang berbasis data, kami terus tumbuh menjadi mitra terpercaya bagi berbagai instansi, mulai dari pusat perbelanjaan, hotel, rumah sakit, hingga area publik dan residensial di berbagai kota besar seperti Jakarta dan Bandung.</p>
         </div>
+        <button type="button" class="link-more" id="aboutToggle" aria-expanded="false" aria-controls="aboutCopy">
+          <span class="link-more-label">Selengkapnya</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+        </button>
       </div>
 
       <div class="vismis">
@@ -311,6 +315,7 @@
       <span class="rule-accent"></span>
       <h2 class="section-title"><span class="t-lead">Galeri</span> &amp; Lokasi Operasional</h2>
       <p class="section-desc">Dipercaya oleh mitra di berbagai titik strategis. Ketuk salah satu foto untuk melihat versi besarnya.</p>
+      <p class="gallery-hint">Geser ke samping untuk melihat lokasi lainnya</p>
     </div>
 
     <div class="gallery-grid" id="galleryGrid">
@@ -393,7 +398,8 @@
           <span class="logo-mark">3<span class="logo-m">M</span></span>
           <span class="logo-word">PARKING</span>
         </a>
-        <p>PT Tiga Marka Utama — manajemen pengelolaan parkir, teknologi parkir digital, dan SDM profesional sejak 2017.</p>
+        <p class="footer-org">PT Tiga Marka Utama</p>
+        <p>Manajemen pengelolaan parkir, teknologi parkir digital, dan SDM profesional sejak 2017.</p>
       </div>
 
       <div>
@@ -408,10 +414,25 @@
 
       <div>
         <h4>Kontak</h4>
-        <ul class="footer-list">
-          <li><a href="tel:081317935303">0813-1793-5303</a></li>
-          <li><a href="mailto:tigamarkautama@gmail.com">tigamarkautama@gmail.com</a></li>
-          <li><a href="https://maps.google.com/?q=Jl.+Pelajar+Pejuang+45+No.119,+Turangga,+Lengkong,+Bandung" target="_blank" rel="noopener">Jl. Pelajar Pejuang 45 No.119, Turangga, Lengkong, Bandung 40264</a></li>
+        <ul class="footer-list footer-contact">
+          <li>
+            <a href="https://wa.me/6281317935303" target="_blank" rel="noopener">
+              <svg class="ico-solid" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.4"></path></svg>
+              0813-1793-5303
+            </a>
+          </li>
+          <li>
+            <a href="mailto:tigamarkautama@gmail.com">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"></rect><path d="m3 6.5 9 6.5 9-6.5"></path></svg>
+              tigamarkautama@gmail.com
+            </a>
+          </li>
+          <li>
+            <a href="https://maps.google.com/?q=Jl.+Pelajar+Pejuang+45+No.119,+Turangga,+Lengkong,+Bandung" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-5.8 7-12a7 7 0 1 0-14 0c0 6.2 7 12 7 12z"></path><circle cx="12" cy="10" r="2.6"></circle></svg>
+              Jl. Pelajar Pejuang 45 No.119, Turangga, Lengkong, Bandung 40264
+            </a>
+          </li>
         </ul>
       </div>
     </div>

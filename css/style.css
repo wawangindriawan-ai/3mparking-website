@@ -689,6 +689,37 @@ body.is-scrolled-past .hero-scroll {
   font-size: clamp(15px, 1.7vw, 16.5px);
 }
 
+/* Reveals the third paragraph on phones; hidden entirely on desktop,
+   where the full copy always shows. */
+.link-more {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  padding: 8px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--blue-700);
+  -webkit-tap-highlight-color: transparent;
+}
+.link-more svg {
+  width: 17px;
+  height: 17px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.3s var(--ease);
+}
+.link-more[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+
 .vismis {
   display: flex;
   flex-direction: column;
@@ -997,6 +1028,15 @@ body.is-scrolled-past .hero-scroll {
 }
 
 /* ---------------- Galeri ---------------- */
+/* Only meaningful once the grid turns into a swipeable row on phones. */
+.gallery-hint {
+  display: none;
+  margin-top: 10px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--blue-700);
+}
+
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1274,6 +1314,27 @@ body.is-scrolled-past .hero-scroll {
 .footer-brand .logo {
   margin-bottom: 18px;
 }
+/* Company name reads as a heading, not as the first half of a sentence —
+   which is why the em dash is gone and the description starts its own
+   line. */
+.footer-brand .footer-org {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.footer-brand .footer-org::after {
+  content: "";
+  display: block;
+  width: 34px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--red);
+  margin-top: 10px;
+}
 .footer-brand p {
   color: rgba(255, 255, 255, 0.6);
   font-size: 14.5px;
@@ -1305,6 +1366,29 @@ body.is-scrolled-past .hero-scroll {
   padding: 7px 0;
   transition: color 0.25s var(--ease);
 }
+/* Icon + label rows. Gold on deep blue matches the icon treatment used
+   in "Kenapa Memilih Kami". */
+.footer-contact a {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.footer-contact svg {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+  margin-top: 4px;
+  stroke: var(--gold);
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.footer-contact svg.ico-solid {
+  fill: var(--gold);
+  stroke: none;
+}
+
 .footer-bottom {
   padding: 20px 0 calc(20px + var(--safe-b));
   display: flex;
@@ -1465,13 +1549,13 @@ body.is-scrolled-past .hero-scroll {
     top: 0;
     right: 0;
     bottom: 0;
-    width: min(84vw, 340px);
+    width: min(70vw, 288px);
     z-index: 99;
     flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;
     gap: 0;
-    padding: calc(86px + var(--safe-t)) 26px calc(26px + var(--safe-b));
+    padding: calc(80px + var(--safe-t)) 20px calc(22px + var(--safe-b));
     background: linear-gradient(180deg, var(--blue-900) 0%, var(--blue-800) 100%);
     box-shadow: -24px 0 60px rgba(8, 16, 62, 0.45);
     transform: translateX(100%);
@@ -1484,12 +1568,12 @@ body.is-scrolled-past .hero-scroll {
   }
   .nav-links > a {
     font-family: var(--font-display);
-    font-size: 21px;
+    font-size: 18px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.6px;
     color: rgba(255, 255, 255, 0.92);
-    padding: 17px 0;
+    padding: 14px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
     opacity: 0;
     transform: translateX(18px);
@@ -1503,13 +1587,13 @@ body.is-scrolled-past .hero-scroll {
     transition-delay: calc(90ms + var(--i, 0) * 45ms);
   }
   .nav-links > a::after {
-    left: -26px;
+    left: -20px;
     right: auto;
     top: 50%;
     bottom: auto;
     width: 4px;
-    height: 24px;
-    margin-top: -12px;
+    height: 22px;
+    margin-top: -11px;
     transform: scaleY(0);
   }
   .nav-links > a.is-active::after {
@@ -1543,12 +1627,17 @@ body.is-scrolled-past .hero-scroll {
 @media (max-width: 760px) {
   .ticket-strip { grid-template-columns: 1fr 1fr; gap: 10px; }
   .ticket-strip-item { padding: 16px 14px; }
+  /* Photo beside the copy rather than above it — a full-width photo per
+     card made each one roughly twice as tall as it needed to be. */
   .service-card-inner {
-    grid-template-columns: 1fr;
-    gap: 14px;
-    padding: 32px 18px 22px;
+    grid-template-columns: clamp(86px, 23vw, 104px) 1fr;
+    gap: 12px;
+    padding: 30px 14px 18px;
+    align-items: start;
   }
-  .service-photo { height: clamp(150px, 42vw, 200px); }
+  .service-photo { height: clamp(84px, 22vw, 100px); }
+  .service-card-inner p { font-size: 14.5px; line-height: 1.6; }
+  .card-pill { font-size: 15px; padding: 9px 18px; }
   .product-grid { grid-template-columns: 1fr; gap: 12px; }
   .product-item { padding: 20px 18px; }
   .product-item .icon-badge {
@@ -1556,8 +1645,42 @@ body.is-scrolled-past .hero-scroll {
     height: 44px;
     margin-bottom: 14px;
   }
-  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  /* Swipeable row instead of 12 stacked tiles — the gallery is social
+     proof, skimmed rather than studied, and stacking it cost about six
+     screens of scrolling. Bleeds to the screen edges so it reads as
+     scrollable; the negative margin exactly cancels .container's gutter,
+     so it never widens the page. */
+  .gallery-grid {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: 74%;
+    gap: 12px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: var(--gutter);
+    margin-inline: calc(var(--gutter) * -1);
+    padding: 4px var(--gutter) 10px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .gallery-grid::-webkit-scrollbar { display: none; }
+  .gallery-item { scroll-snap-align: start; }
+  .gallery-hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  .gallery-hint::after {
+    content: "→";
+    font-size: 15px;
+  }
+
   .vismis { gap: 14px; }
+  .link-more { display: inline-flex; }
+  .about-more { display: none; }
+  .about-copy.is-open .about-more { display: block; }
   .vismis-block { padding: 20px 18px; }
   .vismis-icon { width: 44px; height: 44px; }
   .vismis-icon svg { width: 22px; height: 22px; }
@@ -1619,7 +1742,6 @@ body.is-scrolled-past .hero-scroll {
   .hero-actions { width: 100%; }
   .hero-actions .btn { flex: 1 1 100%; }
   .hero-scroll { display: none; }
-  .gallery-grid { gap: 12px; }
   .gallery-item { padding: 6px 6px 30px; }
   .gallery-caption { left: 8px; right: 8px; bottom: 8px; padding: 7px 8px; }
   .card-pill { padding: 9px 20px; }
@@ -1633,7 +1755,8 @@ body.is-scrolled-past .hero-scroll {
 }
 
 @media (max-width: 380px) {
-  .gallery-grid { grid-template-columns: 1fr; }
+  /* Wider cards on the narrowest phones so the caption pill still fits. */
+  .gallery-grid { grid-auto-columns: 82%; }
   .why-photos .tall:first-child { margin-top: 20px; }
   .vismis-head { gap: 12px; }
 }

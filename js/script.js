@@ -410,6 +410,23 @@
     });
 
     // ------------------------------------------------------
+    // "Selengkapnya" for the about copy (phones only)
+    // The button is display:none above 760px, so desktop always shows
+    // the full text and never reaches this state.
+    // ------------------------------------------------------
+    var aboutToggle = document.getElementById("aboutToggle");
+    var aboutCopy = document.getElementById("aboutCopy");
+
+    if (aboutToggle && aboutCopy) {
+      var aboutLabel = aboutToggle.querySelector(".link-more-label");
+      aboutToggle.addEventListener("click", function () {
+        var open = aboutCopy.classList.toggle("is-open");
+        aboutToggle.setAttribute("aria-expanded", open ? "true" : "false");
+        if (aboutLabel) aboutLabel.textContent = open ? "Tutup" : "Selengkapnya";
+      });
+    }
+
+    // ------------------------------------------------------
     // Current year in footer
     // ------------------------------------------------------
     var yearEl = document.getElementById("year");
