@@ -1,0 +1,22 @@
+# Sampah OS
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# File sementara editor
+*.swp
+*~
+.vscode/
+.idea/
+
+# File preview sementara (dibuat saat screenshot/pengujian)
+_preview*.html
+_frame*.html
+_f_*.html
+
+# Arsip
+*.zip
+
+# Vercel
+.vercel

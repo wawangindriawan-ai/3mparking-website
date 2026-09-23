@@ -44,7 +44,7 @@ Tokens live on `:root` in [css/style.css](css/style.css). Use them rather than l
 Colour rules taken from the printed deck:
 
 - **Royal blue is the brand colour**, not navy-black. `--blue-700` is primary, `--blue-900` is the logo/footer/deep end, `--blue-500` the bright accent. Earlier revisions of this site used a dark navy plus caution yellow; that was wrong and was removed.
-- **`--gold` is an icon colour only.** It appears on the "Kenapa Memilih Kami" tiles and nowhere else — never as text, a fill, or part of the logo. It is too low-contrast on light backgrounds.
+- **`--gold` is reserved for dark backgrounds.** It colours the "Kenapa Memilih Kami" icon tiles and the accent phrase in the hero headline (`.hero-title .hl`) — it is the only brand accent with enough contrast on the blue hero, since red drops to roughly 3.5:1 there. Never use it on light backgrounds, in the logo, or as a fill.
 - **Red is for accents and calls to action**: the `.rule-accent` bar above headings, `.card-pill` service labels, gallery card borders and caption pills, the primary button, and the 3px `body::before` edge line that mirrors the deck's page border.
 - Light sections alternate white and `.section--tint` (a cool `--tint` wash carrying the deck's halftone dot pattern as a `radial-gradient` background image).
 
@@ -64,6 +64,8 @@ Recurring patterns worth reusing: `.container`, `.section` / `.section--tint`, `
 - **The hero count-up must not zero out its element up front.** The real figure stays in the markup until the first `requestAnimationFrame` actually runs, with a 3s `setTimeout` fallback that forces the final value — otherwise throttled rAF leaves a visitor staring at "0+".
 - **A class selector outranks the UA's `[hidden]` rule.** `.nav-backdrop` and `.lightbox` restate `display: none` for `[hidden]`; any new element toggled by `hidden` plus a class needs the same.
 - Gallery tiles are `<button>` elements because the lightbox is the real interaction; the hover zoom is decorative and never fires on touch.
+- **A `padding` shorthand on an element that also carries `.container` wipes out the page gutter.** `.hero-content` uses `padding-top`/`padding-bottom` for exactly this reason; the bug is invisible on desktop, where the container's `max-width` supplies a margin anyway, and only shows up as text touching the screen edge on phones.
+- **Use the real WhatsApp glyph**, not a hand-drawn approximation — a rough path renders as a featureless white blob at FAB size. The same official path appears in the drawer, the contact button, and the FAB.
 
 ### Layout and breakpoints
 
@@ -82,5 +84,7 @@ CSS Grid and Flexbox, no framework. Spacing and type are mostly fluid via `clamp
 
 - **Images** are plain `<img>` cropped by `object-fit: cover` on a fixed-height or `aspect-ratio` parent (which is what prevents layout shift — there are no `width`/`height` attributes). Everything below the fold carries `loading="lazy" decoding="async"`; the hero is preloaded with `fetchpriority="high"`. Filenames are prefixed by role: `gal-*` (gallery, each a lightbox slide), `svc-*` (service cards), plus `hero`, `gate-photo`, `guards-photo`. Keep new files under ~180 KB.
 - **The four `svc-*.jpg` files are crops lifted from the company profile PDF** and still contain the deck's blue card and its text baked into the pixels. `.service-photo img.is-pdf-crop` widens the image and lets the parent clip it so only the photograph shows. This is temporary: when real photographs arrive, drop the `is-pdf-crop` class from the four `<img>` tags and delete the matching CSS block, both of which are flagged with `SEMENTARA` comments.
+- **Floating buttons** live in one `.fab-stack` (back-to-top above WhatsApp). Both share `.fab`; JS toggles `.is-visible` per button, with WhatsApp appearing early on phones and back-to-top only after 1.4 viewport heights.
+- **Product cards carry `data-num="01"…"04"`**, rendered as an oversized ghost numeral by `.product-item::after`. This stands in for photography — every image in `images/` is already used by another section, so adding photos here would duplicate the Layanan cards directly above.
 - **Icons** are inline `<svg viewBox="0 0 24 24">` — stroke icons in `.icon-badge` / `.why-icon` / `.vismis-icon` / `.contact-icon`, plus a filled WhatsApp glyph repeated in the drawer, contact section, and FAB. Do not add an icon library.
 - **Business facts** (founded 2017, 5+ years, 12+ locations, phone 0813-1793-5303, email tigamarkautama@gmail.com, the Bandung address, the motto "Membangun dengan Perencanaan, Mengawal dengan Pengawasan", and the gallery's client names) appear in several places — hero stats, about copy, contact cards, footer. Change them everywhere at once. Hero stat numbers also live in `data-count`/`data-suffix` attributes driving the count-up (`data-plain="true"` opts a value out, as the founding year does). WhatsApp links use `wa.me/62…` international form.
