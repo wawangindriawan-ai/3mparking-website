@@ -15,6 +15,16 @@
     var navBackdrop = document.getElementById("navBackdrop");
     var navLinks = Array.prototype.slice.call(document.querySelectorAll(".nav-links > a"));
     var fabWa = document.getElementById("fabWa");
+    var fabTop = document.getElementById("fabTop");
+
+    if (fabTop) {
+      fabTop.addEventListener("click", function () {
+        window.scrollTo({
+          top: 0,
+          behavior: reduceMotion ? "auto" : "smooth"
+        });
+      });
+    }
 
     // ------------------------------------------------------
     // Navbar height → --nav-h
@@ -131,6 +141,11 @@
         // it appears early; on desktop only after the hero has passed.
         var trigger = window.innerWidth <= MOBILE_BP ? 260 : window.innerHeight * 0.85;
         fabWa.classList.toggle("is-visible", y > trigger);
+      }
+
+      if (fabTop) {
+        // Back-to-top only earns its space once there is a real way back.
+        fabTop.classList.toggle("is-visible", y > window.innerHeight * 1.4);
       }
 
       lastY = y;
