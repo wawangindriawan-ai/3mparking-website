@@ -66,8 +66,10 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="top">
-  <div class="hero-media">
-    <img src="images/hero.jpg" alt="Barrier gate dan sistem parkir digital 3M Parking" fetchpriority="high" decoding="async">
+  <div class="hero-media" id="heroMedia">
+    <img class="hero-slide is-active" src="images/hero.jpg" alt="Barrier gate dan sistem parkir digital 3M Parking" fetchpriority="high" decoding="async">
+    <img class="hero-slide" src="images/gate-photo.jpg" alt="Instalasi barrier gate di lokasi mitra 3M Parking" decoding="async">
+    <img class="hero-slide" src="images/guards-photo.jpg" alt="Petugas parkir 3M Parking bertugas di lapangan" decoding="async">
   </div>
   <div class="container hero-content">
     <div class="hero-eyebrow"><span class="dot"></span> PT TIGA MARKA UTAMA</div>
@@ -314,8 +316,8 @@
     <div class="section-head section-head--center">
       <span class="rule-accent"></span>
       <h2 class="section-title"><span class="t-lead">Galeri</span> &amp; Lokasi Operasional</h2>
-      <p class="section-desc">Dipercaya oleh mitra di berbagai titik strategis. Ketuk salah satu foto untuk melihat versi besarnya.</p>
-      <p class="gallery-hint">Geser ke samping untuk melihat lokasi lainnya</p>
+      <p class="section-desc">Dipercaya oleh mitra di berbagai titik strategis. <span class="desc-desktop">Ketuk salah satu foto untuk melihat versi besarnya.</span></p>
+      <p class="gallery-hint">Geser untuk lokasi lain &middot; ketuk untuk memperbesar</p>
     </div>
 
     <div class="gallery-grid" id="galleryGrid">
@@ -332,6 +334,7 @@
       <button type="button" class="gallery-item"><span class="gallery-thumb"><img src="images/gal-daaruttauhid.jpg" alt="Daarut Tauhid Bandung" loading="lazy" decoding="async"></span><span class="gallery-caption">Daarut Tauhid Bandung</span></button>
       <button type="button" class="gallery-item"><span class="gallery-thumb"><img src="images/gal-batununggal.jpg" alt="Batununggal Indah Club" loading="lazy" decoding="async"></span><span class="gallery-caption">Batununggal Indah Club</span></button>
     </div>
+    <p class="gallery-count" aria-hidden="true"><b id="galCurrent">1</b> / 12</p>
   </div>
 </section>
 

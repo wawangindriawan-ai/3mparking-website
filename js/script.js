@@ -297,6 +297,46 @@
     });
 
     // ------------------------------------------------------
+    // Hero slideshow
+    // ------------------------------------------------------
+    var heroSlides = document.querySelectorAll(".hero-slide");
+
+    if (heroSlides.length > 1 && !reduceMotion) {
+      var slideIndex = 0;
+      window.setInterval(function () {
+        // Nothing to look at in a background tab; skip rather than churn.
+        if (document.hidden) return;
+        heroSlides[slideIndex].classList.remove("is-active");
+        slideIndex = (slideIndex + 1) % heroSlides.length;
+        heroSlides[slideIndex].classList.add("is-active");
+      }, 4000);
+    }
+
+    // ------------------------------------------------------
+    // Gallery position readout (swipe row on phones)
+    // ------------------------------------------------------
+    var galleryGrid = document.getElementById("galleryGrid");
+    var galCurrent = document.getElementById("galCurrent");
+
+    if (galleryGrid && galCurrent) {
+      var galTicking = false;
+      galleryGrid.addEventListener("scroll", function () {
+        if (galTicking) return;
+        galTicking = true;
+        requestAnimationFrame(function () {
+          var first = galleryGrid.firstElementChild;
+          if (first) {
+            var step = first.getBoundingClientRect().width + 12;
+            var total = galleryGrid.children.length;
+            var i = Math.round(galleryGrid.scrollLeft / step) + 1;
+            galCurrent.textContent = Math.min(Math.max(i, 1), total);
+          }
+          galTicking = false;
+        });
+      }, { passive: true });
+    }
+
+    // ------------------------------------------------------
     // Gallery lightbox
     // ------------------------------------------------------
     var galleryItems = Array.prototype.slice.call(
