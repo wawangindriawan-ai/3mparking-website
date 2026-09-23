@@ -547,11 +547,12 @@ p {
   display: flex;
   align-items: center;
   gap: 10px;
-  color: var(--blue-100);
+  color: var(--white);
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(13px, 3.4vw, 16px);
-  letter-spacing: 1.4px;
+  font-size: clamp(15px, 3.8vw, 21px);
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
   margin-bottom: 18px;
   opacity: 0;
   animation: fadeUp 0.7s var(--ease-out) 0.1s forwards;
@@ -1018,7 +1019,11 @@ body.is-scrolled-past .hero-scroll {
   -webkit-tap-highlight-color: transparent;
   transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
 }
+/* Must be a block: this is a <span>, and on an inline box `overflow`
+   clips nothing and `aspect-ratio` is ignored — the hover zoom would
+   spill the photo outside the red frame. */
 .gallery-thumb {
+  display: block;
   border-radius: var(--r-sm);
   overflow: hidden;
   aspect-ratio: 4 / 3;
